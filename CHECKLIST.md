@@ -4,16 +4,13 @@ For an agent setting claude-apps up for someone's app. Each item is a job, the e
 check it yourself — from a `/ship` command's output, a URL, or the dashboard. It is about **your app**, not any internal
 test suite. Nothing here needs a hostname, an internal path, or a key. Tick an item only when you have seen its result.
 
-> Until the `/ship` plugin is published here, the install and verb checks below are what you confirm once it lands; the
-> wiring checks you can do today using [docs/recipes](docs/recipes) and [docs/ingest.md](docs/ingest.md).
-
 ## 1. Install
 
 - [ ] **The plugin is installed.** After the two install lines, `/ship doctor` runs. Check: every line starts with `ok`;
   no line starts with `fix:`. A `fix:` line tells the person exactly what to do (a login, a card) — do that, then
   re-run.
 - [ ] **Auto-update is on.** In `/plugin` → Marketplaces → claude-apps, auto-update shows on. Check: the person confirms
-  the toggle, or `/ship doctor` reports it.
+  the toggle.
 
 ## 2. Wire the app (keys out, signals, feedback)
 
@@ -51,21 +48,17 @@ test suite. Nothing here needs a hostname, an internal path, or a key. Tick an i
 
 ## 6. Share
 
-> **GitHub sign-in on the hosted service is landing — not live yet.** The two sign-in checks below are the design; run
-> them once sign-in is enabled. Until then, confirm `/ship share` prints the two lines, and use a one-time browser link
-> (for a hosted web app) to let a recipient in.
-
-- [ ] **The two lines reach a friend.** Run `/ship share <github-user>`. Check: it prints exactly two lines to send;
-  nothing in them is a key.
-- [ ] **The recipient opens it, signing in with GitHub.** (Once GitHub sign-in is live.) The friend pastes the two
-  lines (for a Claude Code app) or opens the link (for a web app) and signs in with GitHub once — a short code in the
-  browser, no SSH key needed. Check: the dashboard's Users view shows them as a new user after they use it.
-- [ ] **A no-key friend still gets in.** For someone with no SSH key on GitHub, a one-time browser link (for a web app)
-  lets them in today, and the GitHub sign-in will once it's live. Check: they appear as a user with usage.
+- [ ] **The two lines reach a friend.** Run `/ship share <name>`. Check: it prints exactly two lines to send; nothing in
+  them is a key.
+- [ ] **The friend opens it.** The friend pastes the two lines into a terminal and runs `/<app>:open` in Claude Code.
+  The link in the lines signs them in; it needs no SSH key and no GitHub account. Check: the dashboard's Users view
+  shows them as a new user after they use it.
+- [ ] **A GitHub login works too.** `/ship share <their-github-login> --github` also lets that person in by signing in
+  with GitHub (a short code in the browser). Check: they appear as a user with usage.
 
 ## 7. Dashboard
 
-- [ ] **It set itself up.** Open the dashboard (`/ship dash`, or the hosted link). Check: with no configuration, the
+- [ ] **It set itself up.** Open the dashboard (`/ship` with no verb prints its link). Check: with no configuration, the
   first screen answers who used it, what broke and what they said, in about 15 seconds.
 - [ ] **Users, stories and panels appear.** Check: the Users view names each person and agent tester with last seen and
   what they said; the Stories view shows each story's latest pass or fail with its evidence; a custom event the app

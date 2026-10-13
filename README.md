@@ -4,16 +4,11 @@ claude-apps puts an app you built with Claude Code in front of people in minutes
 key, and shows you who used it, what broke and what they said on a dashboard that sets itself up. It is a Claude Code
 plugin: in your app's folder you say what you want in plain words — "put this online for my friends", "send this to my
 testers", "what are people saying?" — and the `/ship` command does the deploy, the versions, the sharing and the
-feedback loop. This repo holds the docs, the skill, and (soon) the released plugin. The plugin's source is not here.
+feedback loop. This repo holds the released plugin (in [plugins/ship](plugins/ship)) and its docs. The plugin's source is
+not here.
 
-Point your own Claude Code at this repo and ask it to set up claude-apps for your project: it reads
-[llms.txt](llms.txt) and can do the whole thing — wire your app, deploy, share and read feedback — without you typing a
-command.
-
-> **The installable `/ship` plugin is landing here shortly.** Until then, point your agent at this repo: it reads the
-> skill ([skills/ship/SKILL.md](skills/ship/SKILL.md)) and the docs, wires your app's signals and feedback today with
-> [docs/recipes](docs/recipes) and [docs/ingest.md](docs/ingest.md), and verifies with [CHECKLIST.md](CHECKLIST.md).
-> We're building this in the open, so expect it to fill in quickly.
+Or point your own Claude Code at this repo — *"Use github.com/zaydek/claude-apps. Ship this app: qa it, deploy it and
+share it with a friend."* — and it reads [llms.txt](llms.txt), installs the plugin and does the whole thing.
 
 ## What you need
 
@@ -26,7 +21,7 @@ You do not need to hold or paste an API key. claude-apps moves the keys your app
 
 ## Install
 
-Once the plugin is published here, two lines install it:
+Two lines install it:
 
 ```sh
 claude plugin marketplace add zaydek/claude-apps
@@ -36,10 +31,7 @@ claude plugin install ship@claude-apps
 Then start Claude Code (`claude`) and: run `/plugin`, go to **Marketplaces**, choose **claude-apps** and turn on
 **auto-update**; then run `/ship doctor` — every line should start with `ok`, and a `fix:` line says what to do.
 
-**Until the plugin lands** (soon): there is nothing to install to get going. Open Claude Code in your app's folder and
-say *"Read github.com/zaydek/claude-apps and set up claude-apps for this project."* Your agent reads the skill and docs
-here and wires your app's signals and feedback now (see [docs/recipes](docs/recipes) and
-[docs/ingest.md](docs/ingest.md)); `/ship` takes over the rest the moment the plugin is published.
+If Claude Code was already open when you installed, restart it so `/ship` appears.
 
 ## Your first five minutes
 
@@ -51,15 +43,15 @@ here and wires your app's signals and feedback now (see [docs/recipes](docs/reci
    every user's machine onto a server, deploys it, and hands you a link to share. In minutes.
 4. **Try it before anyone else.** `/ship qa` runs blind UI, UX and QA testers who use your app the way people would and
    leave feedback on your dashboard, marked as agents, at a cost it tells you up front.
-5. **Share it.** `/ship share <github-user>` prints two lines to send a friend; `/ship deploy` makes a version live and
+5. **Share it.** `/ship share <name>` prints two lines to send a friend; `/ship deploy` makes a version live and
    drafts a one-line "what's new"; `/ship rollback` goes back. `/ship users` shows who's using it; `/ship feedback`
    tells us what you think of claude-apps itself.
 
 ## What your friends do
 
-If your app lives in Claude Code, they paste the two lines you send them and run `/<your-app>:open`. If it's a web app,
-they open one link; if you shared with them by GitHub name, that link asks them to sign in with GitHub once (a short
-code in the browser), and nothing else. Either way they never hold a key. They see what changed in plain words (what's
+They paste the two lines you send them into a terminal and run `/<your-app>:open` in Claude Code: a web app opens in
+their browser, a command-line app answers in the chat. The link in those lines signs them in and is theirs alone. They
+never hold a key. They see what changed in plain words (what's
 new, paused, limit reached), and send feedback in one step. Usage flows to your dashboard with nothing for them to do.
 
 ## Your keys and their data
@@ -99,5 +91,4 @@ Then restart Claude Code.
 
 ## License
 
-This repo is [MIT licensed](LICENSE). The licence covers this repo only; the ship plugin, installed through the
-marketplace above, is not covered by it.
+This repo, the ship plugin in [plugins/ship](plugins/ship) included, is [MIT licensed](LICENSE).

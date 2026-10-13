@@ -1,0 +1,14 @@
+{
+  "name": "claude-apps",
+  "owner": {
+    "name": "Zaydek"
+  },
+  "description": "claude-apps: put an app you built with Claude Code in front of people without anyone holding an API key, and see who uses it, what breaks and what they say. One plugin, ship, with one command, /ship.",
+  "plugins": [
+    {
+      "name": "ship",
+      "source": "./plugins/ship",
+      "description": "Share an app you built with Claude Code with friends, and see who uses it, what broke and what they said. One command: /ship."
+    }
+  ]
+}
