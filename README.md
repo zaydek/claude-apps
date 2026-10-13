@@ -30,7 +30,7 @@ Once the plugin is published here, two lines install it:
 
 ```sh
 claude plugin marketplace add zaydek/claude-apps
-claude plugin install claude-apps@claude-apps
+claude plugin install ship@claude-apps
 ```
 
 Then start Claude Code (`claude`) and: run `/plugin`, go to **Marketplaces**, choose **claude-apps** and turn on
@@ -73,7 +73,7 @@ With auto-update on (see Install), a new version downloads during a session and 
 Code. To update right now:
 
 ```sh
-claude plugin marketplace update claude-apps && claude plugin update claude-apps@claude-apps
+claude plugin marketplace update claude-apps && claude plugin update ship@claude-apps
 ```
 
 Then restart Claude Code.
@@ -99,5 +99,5 @@ Then restart Claude Code.
 
 ## License
 
-This repo is [MIT licensed](LICENSE). The licence covers this repo only; the claude-apps plugin, installed through the
+This repo is [MIT licensed](LICENSE). The licence covers this repo only; the ship plugin, installed through the
 marketplace above, is not covered by it.

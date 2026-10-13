@@ -22,7 +22,7 @@ tools below take over the orchestration the moment the plugin is published.
 
 ```sh
 claude plugin marketplace add zaydek/claude-apps
-claude plugin install claude-apps@claude-apps
+claude plugin install ship@claude-apps
 ```
 
 Then: `/plugin` → Marketplaces → claude-apps → turn on auto-update, and run `/ship doctor` (every line should read
