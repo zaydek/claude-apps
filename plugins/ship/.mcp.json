@@ -1,5 +1,0 @@
-{
-  "mcpServers": {
-    "claude-apps": { "command": "node", "args": ["${CLAUDE_PLUGIN_ROOT}/skills/ship/ship.mjs", "mcp"] }
-  }
-}

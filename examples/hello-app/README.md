@@ -1,20 +1,20 @@
 # hello-app (CLI app)
 
-The CLI example `/ship init` is checked against (the other shapes: `hello-web`, hosted; `hello-server`, local server). `app.mjs` calls a model with a fake key baked in. `ship.run.json` tells the
+The CLI example `/clawed init` is checked against (the other shapes: `hello-web`, hosted; `hello-server`, local server). `app.mjs` calls a model with a fake key baked in. `clawed.run.json` tells the
 launcher how to run a build (`foreground: true` prints the output into the chat, which suits a CLI app; an Electron or
 server app leaves it off and may add a `url`).
 
-After `/ship init`, the key is gone from the tree and the call goes through the project's claude-apps server:
+After `/clawed init`, the key is gone from the tree and the call goes through the project's Clawed Apps server:
 
 ```diff
 -const OPENAI_API_KEY = 'DEMO-NOT-A-REAL-KEY-…'
 -const BASE = 'https://api.openai.com'
 +import { ship } from './ship/client/ship-signals.mjs'
-+const s = ship({ url: process.env.SHIP_URL, token: process.env.SHIP_TOKEN, version: process.env.SHIP_VERSION, sha: process.env.SHIP_SHA, app: 'hello-app', dir: process.env.SHIP_DATA })
-+const BASE = `${process.env.SHIP_URL}/v1/openai`
++const s = ship({ url: process.env.CLAWED_URL, token: process.env.CLAWED_TOKEN, version: process.env.CLAWED_VERSION, sha: process.env.CLAWED_SHA, app: 'hello-app', dir: process.env.CLAWED_DATA })
++const BASE = `${process.env.CLAWED_URL}/v1/openai`
  …
 -    headers: { authorization: `Bearer ${OPENAI_API_KEY}`, 'content-type': 'application/json' },
-+    headers: { authorization: `Bearer ${process.env.SHIP_TOKEN}`, 'content-type': 'application/json' },
++    headers: { authorization: `Bearer ${process.env.CLAWED_TOKEN}`, 'content-type': 'application/json' },
  …
 -console.log(await greet(process.argv[2] || 'world'))
 +await s.start()

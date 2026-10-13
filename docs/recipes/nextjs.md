@@ -6,7 +6,7 @@ Next.js fits two shapes. Pick by whether your app has server code.
 
 **Shape:** hosted web app. `next build` with `output: 'export'` produces an `out/` folder of static files.
 
-`ship.run.json`:
+`clawed.run.json`:
 
 ```json
 { "mode": "hosted", "web": "out" }
@@ -20,7 +20,7 @@ Client calls go to the same-origin proxy with no key or token, exactly as in the
 **Shape:** local server (runs on each person's machine) or your own host. The server reads the proxy's address and token
 from its environment and never holds a vendor key.
 
-`ship.run.json`:
+`clawed.run.json`:
 
 ```json
 { "mode": "local", "run": ["npm", "run", "start"], "port": 3000 }
@@ -32,11 +32,11 @@ In your route handlers and server actions:
 -const key = process.env.OPENAI_API_KEY
 -const res = await fetch('https://api.openai.com/v1/chat/completions', {
 -  headers: { authorization: `Bearer ${key}`, 'content-type': 'application/json' },
-+const res = await fetch(`${process.env.SHIP_URL}/v1/openai/v1/chat/completions`, {
-+  headers: { authorization: `Bearer ${process.env.SHIP_TOKEN}`, 'content-type': 'application/json' },
++const res = await fetch(`${process.env.CLAWED_URL}/v1/openai/v1/chat/completions`, {
++  headers: { authorization: `Bearer ${process.env.CLAWED_TOKEN}`, 'content-type': 'application/json' },
 ```
 
-The launcher passes `SHIP_URL`, `SHIP_TOKEN`, `SHIP_VERSION`, `SHIP_SHA`, `SHIP_DATA` and `SHIP_USER` in the app's
+The launcher passes `CLAWED_URL`, `CLAWED_TOKEN`, `CLAWED_VERSION`, `CLAWED_SHA`, `CLAWED_DATA` and `CLAWED_USER` in the app's
 environment. Remove the vendor key from every `.env*`.
 
 ## Signals
@@ -46,4 +46,4 @@ the React recipe. Add the five points: start, end, error, action and feedback.
 
 ## Wiring it
 
-Say "put this online for my friends". claude-apps picks A or B from your Next config, moves the key out, and deploys.
+Say "put this online for my friends". Clawed Apps picks A or B from your Next config, moves the key out, and deploys.

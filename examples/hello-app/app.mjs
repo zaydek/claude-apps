@@ -1,6 +1,6 @@
 // hello-app: a tiny app with an API key baked in, the way many side projects start.
-// The key below is fake. /ship init finds it, moves it to the claude-apps server and rewires the call.
-const OPENAI_API_KEY = 'DEMO-NOT-A-REAL-KEY-hello-app' // Not a real key: a placeholder baked in so you can see /ship move it off your machine.
+// The key below is fake. /clawed init finds it, moves it to the Clawed Apps server and rewires the call.
+const OPENAI_API_KEY = 'DEMO-NOT-A-REAL-KEY-hello-app' // Not a real key: a placeholder baked in so you can see /clawed move it off your machine.
 const BASE = 'https://api.openai.com'
 
 export async function greet(name) {

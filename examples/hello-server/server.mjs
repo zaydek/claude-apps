@@ -1,9 +1,9 @@
 // hello-server: a small local web server that calls a model with a key baked in, the way many side projects start.
-// The key below is fake. /ship init finds it, moves it to the claude-apps server and rewires the call; the server
+// The key below is fake. /clawed init finds it, moves it to the Clawed Apps server and rewires the call; the server
 // itself then runs on each person's own machine at http://hello-server.localhost:<port>.
 import http from 'node:http'
 
-const OPENAI_API_KEY = 'DEMO-NOT-A-REAL-KEY-hello-server' // Not a real key: a placeholder baked in so you can see /ship move it off your machine.
+const OPENAI_API_KEY = 'DEMO-NOT-A-REAL-KEY-hello-server' // Not a real key: a placeholder baked in so you can see /clawed move it off your machine.
 const BASE = 'https://api.openai.com'
 
 async function greet(name) {

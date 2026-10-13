@@ -1,28 +1,28 @@
 # Recipe: Node CLI
 
-**Shape:** CLI. The tool runs on each person's machine; the claude-apps server holds the key. Twin example:
+**Shape:** CLI. The tool runs on each person's machine; the Clawed Apps server holds the key. Twin example:
 [examples/hello-app](../../examples/hello-app).
 
-`ship.run.json`:
+`clawed.run.json`:
 
 ```json
 { "run": ["node", "app.mjs"], "foreground": true }
 ```
 
-`foreground: true` prints the tool's output into the chat. The launcher passes `SHIP_URL`, `SHIP_TOKEN`, `SHIP_VERSION`,
-`SHIP_SHA`, `SHIP_DATA` and `SHIP_USER` in the environment.
+`foreground: true` prints the tool's output into the chat. The launcher passes `CLAWED_URL`, `CLAWED_TOKEN`, `CLAWED_VERSION`,
+`CLAWED_SHA`, `CLAWED_DATA` and `CLAWED_USER` in the environment.
 
-## The rewrite `/ship` makes
+## The rewrite `/clawed` makes
 
 ```diff
 -const OPENAI_API_KEY = 'DEMO-NOT-A-REAL-KEY-…'
 -const BASE = 'https://api.openai.com'
 +import { ship } from './ship/client/ship-signals.mjs'
-+const s = ship({ url: process.env.SHIP_URL, token: process.env.SHIP_TOKEN, version: process.env.SHIP_VERSION, sha: process.env.SHIP_SHA, app: 'your-app', dir: process.env.SHIP_DATA })
-+const BASE = `${process.env.SHIP_URL}/v1/openai`
++const s = ship({ url: process.env.CLAWED_URL, token: process.env.CLAWED_TOKEN, version: process.env.CLAWED_VERSION, sha: process.env.CLAWED_SHA, app: 'your-app', dir: process.env.CLAWED_DATA })
++const BASE = `${process.env.CLAWED_URL}/v1/openai`
  …
 -  headers: { authorization: `Bearer ${OPENAI_API_KEY}`, 'content-type': 'application/json' },
-+  headers: { authorization: `Bearer ${process.env.SHIP_TOKEN}`, 'content-type': 'application/json' },
++  headers: { authorization: `Bearer ${process.env.CLAWED_TOKEN}`, 'content-type': 'application/json' },
 ```
 
 ## Signals (five points)
@@ -37,5 +37,5 @@ await s.end()                                              // before exit
 
 ## Wiring it
 
-Say "put this online for my friends". claude-apps moves the key out, deploys the proxy, and publishes the launcher so a
+Say "put this online for my friends". Clawed Apps moves the key out, deploys the proxy, and publishes the launcher so a
 friend runs `/<your-app>:open` to use the tool.

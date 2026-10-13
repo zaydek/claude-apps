@@ -1,10 +1,10 @@
 # Recipe: plain HTML + JavaScript (calls a model from the browser)
 
-**Shape:** hosted web app. The claude-apps server serves your static files at its https URL and holds the key; the
+**Shape:** hosted web app. The Clawed Apps server serves your static files at its https URL and holds the key; the
 browser's session cookie signs each call, so there is no key and no token in the page. Twin example:
 [examples/hello-web](../../examples/hello-web).
 
-`ship.run.json` in your build output:
+`clawed.run.json` in your build output:
 
 ```json
 { "mode": "hosted", "web": "." }
@@ -12,7 +12,7 @@ browser's session cookie signs each call, so there is no key and no token in the
 
 (`web` is the folder in the build to serve — `.` for a flat site, or `dist`/`public` if you have one.)
 
-## The rewrite `/ship` makes
+## The rewrite `/clawed` makes
 
 Before: a key and the vendor base URL are baked into the page.
 
@@ -22,7 +22,7 @@ Before: a key and the vendor base URL are baked into the page.
 +import { ship } from '/_ca/signals.mjs'
 +const s = ship({ url: '', app: 'your-app' })
 +s.start()
-+const BASE = '/v1/openai'   // Same origin: the claude-apps server adds the real key
++const BASE = '/v1/openai'   // Same origin: the Clawed Apps server adds the real key
  …
 -  headers: { authorization: `Bearer ${OPENAI_API_KEY}`, 'content-type': 'application/json' },
 +  headers: { 'content-type': 'application/json' },
@@ -40,6 +40,6 @@ fbForm.onsubmit = () => s.feedback(input.value)   // your "send feedback" contro
 
 ## Wiring it
 
-In your app's folder, say "put this online for my friends" (or `/ship init`). claude-apps finds the key, moves it to the
-server, makes this rewrite, deploys, and gives you a link. Then `/ship share <github-user>`; a browser-only friend gets
+In your app's folder, say "put this online for my friends" (or `/clawed init`). Clawed Apps finds the key, moves it to the
+server, makes this rewrite, deploys, and gives you a link. Then `/clawed share <github-user>`; a browser-only friend gets
 a one-time link instead.

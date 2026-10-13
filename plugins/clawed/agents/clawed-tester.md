@@ -1,6 +1,6 @@
 ---
-name: ship-tester
-description: "A blind tester for /ship qa. It plays one described user walking the app's stories on the test version, the way that person would, and never reads the app's code."
+name: clawed-tester
+description: "A blind tester for /clawed qa. It plays one described user walking the app's stories on the test version, the way that person would, and never reads the app's code."
 model: sonnet
 tools: Bash
 ---

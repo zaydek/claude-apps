@@ -1,6 +1,6 @@
 // hello-web: a static web app that calls a model from the browser with a key baked in, the way many demos start.
-// The key below is fake. /ship init finds it, moves it to the claude-apps server, which then hosts this page.
-const OPENAI_API_KEY = 'DEMO-NOT-A-REAL-KEY-hello-web' // Not a real key: a placeholder baked in so you can see /ship move it off your machine.
+// The key below is fake. /clawed init finds it, moves it to the Clawed Apps server, which then hosts this page.
+const OPENAI_API_KEY = 'DEMO-NOT-A-REAL-KEY-hello-web' // Not a real key: a placeholder baked in so you can see /clawed move it off your machine.
 const BASE = 'https://api.openai.com'
 
 async function greet(name) {

@@ -1,31 +1,31 @@
 # Commands
 
-Everything `/ship` does. You can type the words, or say what you want and Claude picks them. Each one also exists as a
+Everything `/clawed` does. You can type the words, or say what you want and Claude picks them. Each one also exists as a
 tool Claude can call directly (the plugin's MCP tools), with the same words and the same answers.
 
 ## Install
 
 ```sh
-claude plugin marketplace add zaydek/claude-apps
-claude plugin install ship@claude-apps
+claude plugin marketplace add zaydek/clawed-apps
+claude plugin install clawed@clawed-apps
 ```
 
 ## The words
 
 | Say | What it does |
 | :- | :- |
-| `/ship` | How the app in this folder is going: what is live, who used it this week, what broke, what they said, how the stories did; and a link to your dashboard |
-| `/ship init` | Sets this folder up on claude-apps. You never need it first: any word below does it on the spot and says so |
-| `/ship qa` | Makes a test version and starts blind testers: one Claude agent per described user and per lens (QA: does it work; UX: does it make sense; UI: does it read right), each walking that user's stories. It says the cost and time first. `/ship qa ux` runs one lens |
-| `/ship deploy` | Makes the test version live. It shows the qa table and what changed, drafts a one-line "what's new" for you to approve, and your friends see it at their next start. A red story stops it: fix first, or deploy anyway. `/ship deploy --qa` waits for a green qa; `/ship deploy --always-qa on` makes that the rule |
-| `/ship rollback` | Back to the version live before |
-| `/ship share sam` | Gives Sam the app: two lines they paste. `--test` gives them the test version; `--github` lets them sign in with a GitHub code (as the GitHub user `sam`) instead of the link; `--remove` takes it back |
-| `/ship users` | Who used it (people and agent testers), and the described users qa plays. "Add a user: Maya, a nurse on night shifts" adds one |
-| `/ship stories` | What people do with the app, and how each story did in qa (works, makes sense, useful). Say a story to add it; `stories export` writes a copy to STORIES.md |
-| `/ship said` | What people and testers said that is still open; after a fix, Claude answers them and they see it at their next start |
-| `/ship pause` | Stops every call at once; `--off` starts again; `--cap 5` sets the daily dollar cap |
-| `/ship feedback` | Tells the claude-apps team what you think (not your app's people) |
-| `/ship doctor` | Checks Node, Claude Code, your sign-in, this folder, and keys left in files; one `ok` or `fix:` line each |
+| `/clawed` | How the app in this folder is going: what is live, who used it this week, what broke, what they said, how the stories did; and a link to your dashboard |
+| `/clawed init` | Sets this folder up on Clawed Apps. You never need it first: any word below does it on the spot and says so |
+| `/clawed qa` | Makes a test version and starts blind testers: one Claude agent per described user and per lens (QA: does it work; UX: does it make sense; UI: does it read right), each walking that user's stories. It says the cost and time first. `/clawed qa ux` runs one lens |
+| `/clawed deploy` | Makes the test version live. It shows the qa table and what changed, drafts a one-line "what's new" for you to approve, and your friends see it at their next start. A red story stops it: fix first, or deploy anyway. `/clawed deploy --qa` waits for a green qa; `/clawed deploy --always-qa on` makes that the rule |
+| `/clawed rollback` | Back to the version live before |
+| `/clawed share sam` | Gives Sam the app: two lines they paste. `--test` gives them the test version; `--github` lets them sign in with a GitHub code (as the GitHub user `sam`) instead of the link; `--remove` takes it back |
+| `/clawed users` | Who used it (people and agent testers), and the described users qa plays. "Add a user: Maya, a nurse on night shifts" adds one |
+| `/clawed stories` | What people do with the app, and how each story did in qa (works, makes sense, useful). Say a story to add it; `stories export` writes a copy to STORIES.md |
+| `/clawed said` | What people and testers said that is still open; after a fix, Claude answers them and they see it at their next start |
+| `/clawed pause` | Stops every call at once; `--off` starts again; `--cap 5` sets the daily dollar cap |
+| `/clawed feedback` | Tells the Clawed Apps team what you think (not your app's people) |
+| `/clawed doctor` | Checks Node, Claude Code, your sign-in, this folder, and keys left in files; one `ok` or `fix:` line each |
 
 Chain them in one breath: "qa it, deploy it and share it with zaydek" runs all three without stopping to ask.
 
@@ -44,7 +44,7 @@ it is theirs alone. New versions arrive at their next start, with your "what's n
 
 | Step | Why |
 | :- | :- |
-| Sign in once with GitHub (a code at github.com/login/device) | claude-apps is yours under your GitHub login |
-| Choose who gets the app with `/ship share` | That is the whole access decision |
+| Sign in once with GitHub (a code at github.com/login/device) | Clawed Apps is yours under your GitHub login |
+| Choose who gets the app with `/clawed share` | That is the whole access decision |
 | Set a spend limit in each AI vendor's console | A backstop in case the caps or the price table are wrong |
 | Rotate a key that was ever in git history | A leaked key stays leaked; only its owner can rotate it |
