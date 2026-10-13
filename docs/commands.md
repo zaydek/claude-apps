@@ -38,8 +38,14 @@ Chain them in one breath: "qa it, deploy it and share it with zaydek" runs all t
 
 ```
 claude plugin marketplace add <the link you sent>
-claude plugin install <app>@<app>
+claude plugin install <app>@<your GitHub login>
 ```
+
+The link is that person's own marketplace of your apps, named after your GitHub login: it names no app, and every app
+you share with them joins it (they run `claude plugin marketplace update <your login>`, then install the new one). Each
+app keeps its own track for them (`--test` gets the test version). Links made before 0.3.20 (one per app) keep working.
+`/claw rename <name>` renames an app: its versions, people, events and feedback stay, its old name and every launcher
+made before keep reaching it, and its builds stay signed under its first name.
 
 Then in Claude Code `/<app>:open` starts it (a local web app opens in their browser at `http://<app>.localhost:<port>`;
 a command-line app answers in the chat), and `/<app>:feedback <words>` tells you something. The link signs them in, and
@@ -77,6 +83,31 @@ so stop can close it. `plugin` names a folder whose
 feedback and forget (which stay the launcher's); `__PROJECT__` in them becomes the app's name. They reach the app with
 `sh "${CLAUDE_PLUGIN_ROOT}/hooks/run.sh" --run <command words>`, which runs a command in the installed build's folder
 with the app's `CLAWED_*` settings (`node` is the launcher's Node; `CLAWED_LAUNCHER` is that same run.sh, to call back into it).
+
+## An app made of hooks
+
+An app whose plugin is the app (hooks, a hooks module, scripts) ships its whole plugin folder:
+
+```json
+{
+  "mode": "files",
+  "platforms": { "darwin-arm64": { "dir": "out/darwin-arm64" }, "linux-x64": { "dir": "out/linux-x64" } },
+  "plugin": "plugin",
+  "plugin_all": true,
+  "commands": false
+}
+```
+
+`plugin_all` sends every text file in that folder (up to 512 files and 3.5 MB; binaries go in the build). Its
+`hooks/hooks.json` and any hook files its `plugin.json` names are merged into the friend's one `hooks/hooks.json`, after
+the launcher's own SessionStart; its other `plugin.json` keys ride along, under the app's name. Each command hook gets
+`CLAWED_APP_DIR`, a stable path to this computer's current build (`~/.claude-apps/<app>/current`, which a hooks module
+can use directly), and `CLAWED_LAUNCHER`, the plugin's `run.sh`. On the first start the build may still be on its way
+when the app's SessionStart hook runs, so a hook that needs it should tolerate its absence (a UserPromptSubmit hook runs
+after it is in). An update moves `current` and keeps one build. `"mode": "files"` builds have nothing to open.
+`"commands": false` leaves the friend's `/` menu to the app's own commands; the launcher's verbs stay reachable as
+`sh "$CLAWED_LAUNCHER" --open | --stop | --status | --forget`, and `sh "$CLAWED_LAUNCHER" --feedback "<words>"` (or the
+words on stdin) sends feedback to you, signed in as that person.
 
 ## What only you can do
 
