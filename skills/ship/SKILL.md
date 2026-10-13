@@ -1,6 +1,6 @@
 ---
 name: ship
-description: claude-apps. Put an app someone built with Claude Code in front of people in minutes without anyone holding an API key: move the app's keys onto a per-project server, ship versions, share with friends, and collect usage, errors and feedback onto a dashboard. Use for /ship doctor, init, stories, qa, deploy, rollback, share, users and feedback.
+description: "claude-apps. Put an app someone built with Claude Code in front of people in minutes without anyone holding an API key: move the app's keys onto a per-project server, ship versions, share with friends, and collect usage, errors and feedback onto a dashboard. Use for /ship doctor, init, stories, qa, deploy, rollback, share, users and feedback."
 ---
 
 # /ship (claude-apps)
