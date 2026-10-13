@@ -16,10 +16,10 @@ claude plugin marketplace add zaydek/clawed-apps
 claude plugin install clawed@clawed-apps
 ```
 
-You can run both lines yourself with Bash; they ask nothing. A plugin installed while Claude Code is running loads at
-its next start, so in this same session `/clawed` is not there yet. Either tell the person to restart Claude Code (`/clawed`
-is there after), or carry on now: `claude plugin list --json` gives the plugin's `installPath` (its `id` is
-`clawed@clawed-apps`), and from the app's folder
+This repo is the plugin, not a place for the person's app: never push or copy their app here. Run both lines yourself
+with Bash; they ask nothing. A plugin installed while Claude Code is running loads at its next start, so in this same
+session `/clawed` is not there yet. Don't stop to ask for a restart; carry on now: `claude plugin list --json` gives the
+plugin's `installPath` (its `id` is `clawed@clawed-apps`; don't guess the folder), and from the app's folder
 
 ```sh
 node "<installPath>/skills/clawed/clawed.mjs" <verb> [words]

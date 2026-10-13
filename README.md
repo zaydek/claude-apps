@@ -7,8 +7,9 @@ testers", "what are people saying?" — and the `/clawed` command does the deplo
 feedback loop. This repo holds the released plugin (in [plugins/clawed](plugins/clawed)) and its docs. The plugin's source is
 not here.
 
-Or point your own Claude Code at this repo — *"Use github.com/zaydek/clawed-apps. Ship this app: qa it, deploy it and
-share it with a friend."* — and it reads [llms.txt](llms.txt), installs the plugin and does the whole thing.
+Or tell your own Claude Code, in your app's folder: *"Install the Clawed Apps plugin from github.com/zaydek/clawed-apps,
+then ship this app: qa it, deploy it and share it with a friend."* It reads [llms.txt](llms.txt), installs the plugin and
+does the whole thing. (This repo is the plugin; your app's code never goes here.)
 
 ## What you need
 
