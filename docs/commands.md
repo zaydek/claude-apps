@@ -76,7 +76,7 @@ so stop can close it. `plugin` names a folder whose
 `skills/<name>/...`, `commands/<verb>.md` and `.mcp.json` go into every friend's `<app>` plugin beside open, stop,
 feedback and forget (which stay the launcher's); `__PROJECT__` in them becomes the app's name. They reach the app with
 `sh "${CLAUDE_PLUGIN_ROOT}/hooks/run.sh" --run <command words>`, which runs a command in the installed build's folder
-with the app's `CLAWED_*` settings (`node` is the launcher's Node).
+with the app's `CLAWED_*` settings (`node` is the launcher's Node; `CLAWED_LAUNCHER` is that same run.sh, to call back into it).
 
 ## What only you can do
 
