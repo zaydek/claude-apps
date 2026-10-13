@@ -1,5 +1,8 @@
 # Clawed Apps
 
+> **Claude Code, installing this for someone?** Follow [llms.txt](llms.txt): install with the two lines below, then do
+> the whole job in this same session (no restart), starting with `doctor`.
+
 Clawed Apps puts an app you built with Claude Code in front of people in minutes, without anyone ever holding an API
 key, and shows you who used it, what broke and what they said on a dashboard that sets itself up. It is a Claude Code
 plugin: in your app's folder you say what you want in plain words — "put this online for my friends", "send this to my
@@ -32,7 +35,8 @@ claude plugin install clawed@clawed-apps
 Then start Claude Code (`claude`) and: run `/plugin`, go to **Marketplaces**, choose **clawed-apps** and turn on
 **auto-update**; then run `/clawed doctor` — every line should start with `ok`, and a `fix:` line says what to do.
 
-If Claude Code was already open when you installed, restart it so `/clawed` appears.
+If Claude Code was already open when you installed, restart it so `/clawed` appears. (Claude Code installing it for you
+can carry on without a restart: [llms.txt](llms.txt) shows how.)
 
 ## Your first five minutes
 
