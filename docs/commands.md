@@ -56,8 +56,8 @@ A desktop app (Electron, Tauri, a native binary) ships one archive per OS. In th
   "mode": "app",
   "platforms": {
     "linux-x64": { "dir": "out/linux-x64", "run": ["./MyApp.AppImage"] },
-    "darwin-arm64": { "dir": "out/darwin-arm64", "run": ["./MyApp.app/Contents/MacOS/MyApp"] },
-    "darwin-x64": { "dir": "out/darwin-x64", "run": ["./MyApp.app/Contents/MacOS/MyApp"] }
+    "darwin-arm64": { "dir": "out/darwin-arm64", "app": "MyApp.app" },
+    "darwin-x64": { "dir": "out/darwin-x64", "app": "MyApp.app" }
   },
   "plugin": "claude-plugin"
 }
@@ -66,7 +66,13 @@ A desktop app (Electron, Tauri, a native binary) ships one archive per OS. In th
 `/claw deploy` (and qa) packs each `dir` as its own signed archive of the same version; a friend's computer gets only
 its own (`linux-x64`, `darwin-arm64`, `darwin-x64`, `win32-x64`, `*-arm64`), and is told plainly when the version has
 none for it. Each archive shows its progress as it sends (percent and MB/s) and is given up on only when nothing has gone through
-for 60 s, however slow the uplink. Run the app's binary itself (not `open MyApp.app`), so stop can close it. `plugin` names a folder whose
+for 60 s, however slow the uplink. On a Mac, `app` names the app bundle inside `dir`: the friend's launcher installs it
+to `/Applications/MyApp.app` (or `~/Applications` when `/Applications` needs a password) and opens it with `open -a`, so
+macOS asks for permissions as MyApp and Spotlight finds it. An update asks a running copy to quit (SIGTERM, up to 10 s,
+never forced), swaps the bundle in from the checked build, and opens it again; the app's own data folder is never
+touched, and no `CLAWED_*` setting reaches it. A bundle at that path with a different `CFBundleIdentifier` is never
+replaced. Keep a `run` beside `app` for friends on a launcher older than 0.3.17. Elsewhere, run the app's binary itself,
+so stop can close it. `plugin` names a folder whose
 `skills/<name>/...`, `commands/<verb>.md` and `.mcp.json` go into every friend's `<app>` plugin beside open, stop,
 feedback and forget (which stay the launcher's); `__PROJECT__` in them becomes the app's name. They reach the app with
 `sh "${CLAUDE_PLUGIN_ROOT}/hooks/run.sh" --run <command words>`, which runs a command in the installed build's folder
