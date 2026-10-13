@@ -1,0 +1,27 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>hello-web</title>
+  <style>
+    :root { color-scheme: light dark; --bg: #fafaf9; --fg: #1c1917; --mute: #78716c; --acc: #0f766e; }
+    @media (prefers-color-scheme: dark) { :root { --bg: #1c1917; --fg: #f5f5f4; --mute: #a8a29e; --acc: #2dd4bf; } }
+    body { margin: 0; background: var(--bg); color: var(--fg); font: 16px/1.5 system-ui, sans-serif; padding: 2rem 16px; }
+    main { max-width: 32rem; margin: 0 auto; display: grid; gap: 1rem; }
+    input, textarea, button { font: inherit; padding: .5rem .75rem; border-radius: .5rem; border: 1px solid var(--mute); background: transparent; color: inherit; }
+    button { background: var(--acc); color: var(--bg); border: 0; cursor: pointer; }
+    output { min-height: 1.5em; color: var(--mute); }
+  </style>
+</head>
+<body>
+  <main>
+    <h1>hello-web</h1>
+    <form id="greet"><input id="name" value="world" aria-label="Name"> <button>Greet</button></form>
+    <output id="out"></output>
+    <form id="fb"><textarea id="text" rows="3" placeholder="Tell the author what you noticed" aria-label="Feedback"></textarea> <button>Send feedback</button></form>
+    <output id="fbout"></output>
+  </main>
+  <script type="module" src="app.js"></script>
+</body>
+</html>

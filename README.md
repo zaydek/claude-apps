@@ -1,0 +1,103 @@
+# claude-apps
+
+claude-apps puts an app you built with Claude Code in front of people in minutes, without anyone ever holding an API
+key, and shows you who used it, what broke and what they said on a dashboard that sets itself up. It is a Claude Code
+plugin: in your app's folder you say what you want in plain words — "put this online for my friends", "send this to my
+testers", "what are people saying?" — and the `/ship` command does the deploy, the versions, the sharing and the
+feedback loop. This repo holds the docs, the skill, and (soon) the released plugin. The plugin's source is not here.
+
+Point your own Claude Code at this repo and ask it to set up claude-apps for your project: it reads
+[llms.txt](llms.txt) and can do the whole thing — wire your app, deploy, share and read feedback — without you typing a
+command.
+
+> **The installable `/ship` plugin is landing here shortly.** Until then, point your agent at this repo: it reads the
+> skill ([skills/ship/SKILL.md](skills/ship/SKILL.md)) and the docs, wires your app's signals and feedback today with
+> [docs/recipes](docs/recipes) and [docs/ingest.md](docs/ingest.md), and verifies with [CHECKLIST.md](CHECKLIST.md).
+> We're building this in the open, so expect it to fill in quickly.
+
+## What you need
+
+- [Claude Code](https://claude.com/claude-code). Check with `claude --version`; update with `claude update`.
+- A GitHub account. The first `/ship` asks you to sign in with GitHub once — a short code you enter in your browser.
+- Nothing else to start. Hosting is by us and needs no server account (invite-only for now). You only need a
+  [Fly.io](https://fly.io) or Docker account if you choose to run your app's server yourself.
+
+You do not need to hold or paste an API key. claude-apps moves the keys your app already has onto a server for you.
+
+## Install
+
+Once the plugin is published here, two lines install it:
+
+```sh
+claude plugin marketplace add zaydek/claude-apps
+claude plugin install claude-apps@claude-apps
+```
+
+Then start Claude Code (`claude`) and: run `/plugin`, go to **Marketplaces**, choose **claude-apps** and turn on
+**auto-update**; then run `/ship doctor` — every line should start with `ok`, and a `fix:` line says what to do.
+
+**Until the plugin lands** (soon): there is nothing to install to get going. Open Claude Code in your app's folder and
+say *"Read github.com/zaydek/claude-apps and set up claude-apps for this project."* Your agent reads the skill and docs
+here and wires your app's signals and feedback now (see [docs/recipes](docs/recipes) and
+[docs/ingest.md](docs/ingest.md)); `/ship` takes over the rest the moment the plugin is published.
+
+## Your first five minutes
+
+1. **Check your setup.** `/ship doctor`. Fix anything it flags.
+2. **Describe your app.** In your app's folder, tell Claude Code who it's for and what they do with it — two users and
+   a few stories, in plain words. claude-apps keeps these with your project; the testers in step 4 play exactly these
+   users, and your dashboard shows each story's latest pass or fail.
+3. **Put it online.** Say "put this online for my friends". claude-apps recognises your stack, moves your API keys off
+   every user's machine onto a server, deploys it, and hands you a link to share. In minutes.
+4. **Try it before anyone else.** `/ship qa` runs blind UI, UX and QA testers who use your app the way people would and
+   leave feedback on your dashboard, marked as agents, at a cost it tells you up front.
+5. **Share it.** `/ship share <github-user>` prints two lines to send a friend; `/ship deploy` makes a version live and
+   drafts a one-line "what's new"; `/ship rollback` goes back. `/ship users` shows who's using it; `/ship feedback`
+   tells us what you think of claude-apps itself.
+
+## What your friends do
+
+If your app lives in Claude Code, they paste the two lines you send them and run `/<your-app>:open`. If it's a web app,
+they open one link; if you shared with them by GitHub name, that link asks them to sign in with GitHub once (a short
+code in the browser), and nothing else. Either way they never hold a key. They see what changed in plain words (what's
+new, paused, limit reached), and send feedback in one step. Usage flows to your dashboard with nothing for them to do.
+
+## Your keys and their data
+
+Your API keys never leave your server. Nobody you share with ever holds one. You see counts, costs, errors and the
+feedback people send — not what they type to your app's AI.
+
+## Updating
+
+With auto-update on (see Install), a new version downloads during a session and loads the next time you start Claude
+Code. To update right now:
+
+```sh
+claude plugin marketplace update claude-apps && claude plugin update claude-apps@claude-apps
+```
+
+Then restart Claude Code.
+
+## Troubleshooting
+
+1. Run `/ship doctor`. Each line starts with `ok` or `fix:`, and a `fix:` line says what to do.
+2. If `/ship` itself is missing, update Claude Code (`claude update`) and restart it.
+3. Still stuck? `/ship feedback` and describe what happened, in your own words: what you did, what you expected, what
+   you got. It reaches us with your version and a short log with anything key-shaped removed.
+
+## Docs
+
+- [llms.txt](llms.txt): the entry point for an agent setting up claude-apps for a project.
+- [docs/commands.md](docs/commands.md): every `/ship` verb and when to use it.
+- [docs/recipes](docs/recipes): how to wire each common stack (HTML+JS, React, Next.js, Express, FastAPI/Flask, Python
+  CLI, Node CLI), with a copyable example each.
+- [docs/ingest.md](docs/ingest.md): the contract for an app that runs on its own server and only reports usage and
+  feedback.
+- [docs/hosting.md](docs/hosting.md), [docs/security.md](docs/security.md), [docs/limits.md](docs/limits.md): where it
+  runs, how keys stay safe, and the caps that keep your bill from running away.
+- [examples](examples): three tiny apps (a CLI, a hosted web app, a local server), one per shape.
+
+## License
+
+This repo is [MIT licensed](LICENSE). The licence covers this repo only; the claude-apps plugin, installed through the
+marketplace above, is not covered by it.
