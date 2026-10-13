@@ -43,7 +43,33 @@ claude plugin install <app>@<app>
 
 Then in Claude Code `/<app>:open` starts it (a local web app opens in their browser at `http://<app>.localhost:<port>`;
 a command-line app answers in the chat), and `/<app>:feedback <words>` tells you something. The link signs them in, and
-it is theirs alone. New versions arrive at their next start, with your "what's new".
+it is theirs alone. New versions arrive at their next start, with your "what's new". `/<app>:stop` closes what open
+started (a local server, or a desktop app with every process it started), and `/<app>:forget` closes it the same way
+before it deletes the sign-in, the builds and the app's data.
+
+## A desktop app, built per OS
+
+A desktop app (Electron, Tauri, a native binary) ships one archive per OS. In the app's `clawed.run.json`:
+
+```json
+{
+  "mode": "app",
+  "platforms": {
+    "linux-x64": { "dir": "out/linux-x64", "run": ["./MyApp.AppImage"] },
+    "darwin-arm64": { "dir": "out/darwin-arm64", "run": ["./MyApp.app/Contents/MacOS/MyApp"] },
+    "darwin-x64": { "dir": "out/darwin-x64", "run": ["./MyApp.app/Contents/MacOS/MyApp"] }
+  },
+  "plugin": "claude-plugin"
+}
+```
+
+`/claw deploy` (and qa) packs each `dir` as its own signed archive of the same version; a friend's computer gets only
+its own (`linux-x64`, `darwin-arm64`, `darwin-x64`, `win32-x64`, `*-arm64`), and is told plainly when the version has
+none for it. Run the app's binary itself (not `open MyApp.app`), so stop can close it. `plugin` names a folder whose
+`skills/<name>/...`, `commands/<verb>.md` and `.mcp.json` go into every friend's `<app>` plugin beside open, stop,
+feedback and forget (which stay the launcher's); `__PROJECT__` in them becomes the app's name. They reach the app with
+`sh "${CLAUDE_PLUGIN_ROOT}/hooks/run.sh" --run <command words>`, which runs a command in the installed build's folder
+with the app's `CLAWED_*` settings (`node` is the launcher's Node).
 
 ## What only you can do
 
