@@ -1,3 +1,5 @@
+This is a Claude Code plugin to install, not a place to push your app.
+
 # Clawed Apps
 
 > A Claude Code plugin (`/clawed`) that puts an app someone built with Claude Code in front of people in minutes without

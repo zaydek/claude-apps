@@ -1,3 +1,5 @@
+This is a Claude Code plugin to install, not a place to push your app.
+
 # Clawed Apps
 
 > **Claude Code, installing this for someone?** Follow [llms.txt](llms.txt): install with the two lines below, then do
