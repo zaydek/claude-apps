@@ -3,10 +3,10 @@
 What stops one person, or a bug, from running up your bill.
 
 - **Per person:** requests a minute and a day, dollars a day, four calls at once, and a daily quota of events.
-- **Per app:** a daily dollar cap for everyone together, until 00:00 UTC. `/clawed pause --cap 5` sets it to $5.
+- **Per app:** a daily dollar cap for everyone together, until 00:00 UTC. `/claw pause --cap 5` sets it to $5.
 - **Per call:** a call's worst-case cost is reserved before it goes out, and a reply with no usage numbers is charged at
   that worst case.
-- **Pause:** `/clawed pause` stops every call at once (people see "paused by the author"); `/clawed pause --off` starts
+- **Pause:** `/claw pause` stops every call at once (people see "paused by the author"); `/claw pause --off` starts
   again.
 
 Vendor error messages are replaced or scrubbed, so "incorrect API key" never reaches anyone, and anything shaped like a

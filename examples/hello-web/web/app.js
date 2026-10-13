@@ -1,16 +1,16 @@
 // hello-web: a static web app that calls a model from the browser with a key baked in, the way many demos start.
-// The key below is fake. /clawed init finds it, moves it to the Clawed Apps server, which then hosts this page.
-const OPENAI_API_KEY = 'DEMO-NOT-A-REAL-KEY-hello-web' // Not a real key: a placeholder baked in so you can see /clawed move it off your machine.
-const BASE = 'https://api.openai.com'
+// The key below is fake. A real one, /claw finds and moves to Clawed Apps, which then hosts this page.
+const ANTHROPIC_API_KEY = 'DEMO-NOT-A-REAL-KEY-hello-web' // Not a real key: it stands where yours would be, and /claw moves a real one off your machine.
+const BASE = 'https://api.anthropic.com'
 
 async function greet(name) {
-  const r = await fetch(`${BASE}/v1/chat/completions`, {
+  const r = await fetch(`${BASE}/v1/messages`, {
     method: 'POST',
-    headers: { authorization: `Bearer ${OPENAI_API_KEY}`, 'content-type': 'application/json' },
-    body: JSON.stringify({ model: 'gpt-4o-mini', messages: [{ role: 'user', content: `Say hello to ${name} in five words.` }] }),
+    headers: { 'x-api-key': ANTHROPIC_API_KEY, 'anthropic-version': '2023-06-01', 'content-type': 'application/json' },
+    body: JSON.stringify({ model: 'claude-haiku-5-5', max_tokens: 60, messages: [{ role: 'user', content: `Say hello to ${name} in five words.` }] }),
   })
   if (!r.ok) throw new Error(`model call failed: ${r.status}`)
-  return (await r.json()).choices[0].message.content
+  return (await r.json()).content[0].text
 }
 
 const $ = id => document.getElementById(id)

@@ -12,7 +12,7 @@
 `foreground: true` prints the tool's output into the chat. The launcher passes `CLAWED_URL`, `CLAWED_TOKEN`, `CLAWED_VERSION`,
 `CLAWED_SHA`, `CLAWED_DATA` and `CLAWED_USER` in the environment.
 
-## The rewrite `/clawed` makes
+## The rewrite `/claw` makes
 
 ```diff
 -const OPENAI_API_KEY = 'DEMO-NOT-A-REAL-KEY-…'

@@ -1,13 +1,13 @@
 # Sending signals and feedback from any app
 
 For an app that runs on its own (not started through a friend's `/<app>:open`) and only needs to report how it is being
-used. (An app started through `/<app>:open` gets `CLAWED_URL` and `CLAWED_TOKEN`, which post to the same places.) `/clawed signals`, in the app's folder, puts the app on Clawed Apps if it isn't yet and writes its two settings to
+used. (An app started through `/<app>:open` gets `CLAWED_URL` and `CLAWED_TOKEN`, which post to the same places.) `/claw signals`, in the app's folder, puts the app on Clawed Apps if it isn't yet and writes its two settings to
 `~/.config/clawed-apps/<app>.env` (mode 600):
 
 | Setting | What |
 | :- | :- |
 | `CLAWED_SIGNALS_URL` | `https://<service>/p/<you>/<app>/events` |
-| `CLAWED_SIGNALS_KEY` | `shs_...`: it can post events and feedback to this one app and do nothing else. Running `/clawed signals` again replaces it |
+| `CLAWED_SIGNALS_KEY` | `shs_...`: it can post events and feedback to this one app and do nothing else. Running `/claw signals` again replaces it |
 
 This contract is stable. If addresses change later, this endpoint keeps answering at the same path (or redirects with
 307, so the method and body survive).

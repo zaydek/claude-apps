@@ -12,7 +12,7 @@ Clawed Apps server holds the key. Twin example: [examples/hello-server](../../ex
 The launcher gives the app `PORT` and `HOST` to listen on, plus `CLAWED_URL`, `CLAWED_TOKEN`, `CLAWED_VERSION`, `CLAWED_SHA`,
 `CLAWED_DATA` and `CLAWED_USER`. Listen on `process.env.PORT` / `process.env.HOST`.
 
-## The rewrite `/clawed` makes
+## The rewrite `/claw` makes
 
 ```diff
 -const OPENAI_API_KEY = 'DEMO-NOT-A-REAL-KEY-…'

@@ -13,7 +13,7 @@ proxy's address and token from its environment and never holds a vendor key.
 `CLAWED_TOKEN`, `CLAWED_VERSION`, `CLAWED_SHA`, `CLAWED_DATA` and `CLAWED_USER`. Bind to `os.environ["HOST"]` and
 `int(os.environ["PORT"])`.
 
-## The rewrite `/clawed` makes (keys out)
+## The rewrite `/claw` makes (keys out)
 
 ```diff
 -OPENAI_API_KEY = "DEMO-NOT-A-REAL-KEY-…"

@@ -3,12 +3,12 @@
   "owner": {
     "name": "Zaydek"
   },
-  "description": "Clawed Apps: put an app you built with Claude Code in front of people without anyone holding an API key, and see who uses it, what breaks and what they say. One plugin, clawed, with one command, /clawed.",
+  "description": "Clawed Apps: put an app you built with Claude Code in front of people without anyone holding an API key, and see who uses it, what breaks and what they say. One plugin, clawed, with one command, /claw.",
   "plugins": [
     {
       "name": "clawed",
       "source": "./plugins/clawed",
-      "description": "Clawed Apps: share an app you built with Claude Code with friends, and see who uses it, what broke and what they said. One command: /clawed."
+      "description": "Clawed Apps: share an app you built with Claude Code with friends, and see who uses it, what broke and what they said. One command: /claw."
     }
   ]
 }

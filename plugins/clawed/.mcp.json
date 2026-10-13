@@ -1,9 +1,9 @@
 {
   "mcpServers": {
-    "clawed": {
+    "claw": {
       "command": "node",
       "args": [
-        "${CLAUDE_PLUGIN_ROOT}/skills/clawed/clawed.mjs",
+        "${CLAUDE_PLUGIN_ROOT}/skills/claw/claw.mjs",
         "mcp"
       ]
     }

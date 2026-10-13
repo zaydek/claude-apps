@@ -4,8 +4,10 @@ The short version: your API keys live sealed on the service, and nobody you shar
 
 ## Keys
 
-The first time, `/clawed` finds the keys baked into your app's files, sends them to the service, blanks them in the
-files, and tells Claude to rewire each line to call through the service instead. It never prints a key; it names the
+The first time, `/claw init` (or `qa`, `deploy`, `share`) lists the keys baked into your app's files, file and line,
+and changes nothing until you say yes; then it sends them to the service, blanks them in the files, and tells Claude
+to rewire each line to call through the service instead. A placeholder (DEMO-NOT-A-REAL-KEY, your-api-key-here) is
+left alone, and a line in a test folder is named as one. It never prints a key; it names the
 file and line. After that, a version is refused while any file in it still holds a key.
 
 Vendor error messages are replaced or scrubbed, so "incorrect API key" never reaches anyone, and key-shaped strings are
@@ -19,9 +21,9 @@ version whose signature does not check out, so the service alone cannot ship cod
 
 ## Signing in
 
-You sign in with GitHub: a code at github.com/login/device for `/clawed`, or "Sign in with GitHub" on the dashboard. The
+You sign in with GitHub: a code at github.com/login/device for `/claw`, or "Sign in with GitHub" on the dashboard. The
 service asks GitHub for your login and nothing else. A friend signs in through the share link you sent: it holds a code
-for them alone, which their copy of the app trades for a token of its own at its first start; `/clawed share <name>
+for them alone, which their copy of the app trades for a token of its own at its first start; `/claw share <name>
 --remove` ends both. A friend shared with `--github` can instead sign in with a GitHub code at their first start.
 
 ## Browsers

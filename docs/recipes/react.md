@@ -12,7 +12,7 @@ calls the same origin, so there is no key and no token in the bundle.
 When you set the project up, give Clawed Apps your build command (e.g. `npm run build`) so each new version is built
 before it ships.
 
-## The rewrite `/clawed` makes
+## The rewrite `/claw` makes
 
 Point every model call at the same-origin proxy and drop the key. The call usually lives in one module:
 
@@ -49,4 +49,4 @@ const sendFeedback = text => s.feedback(text)
 ## Wiring it
 
 Say "put this online for my friends" in the project folder. Clawed Apps builds, moves the key out, deploys and hands you
-a link. `/clawed qa` runs blind testers before any friend looks.
+a link. `/claw qa` runs blind testers before any friend looks.

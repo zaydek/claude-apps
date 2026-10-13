@@ -1,7 +1,7 @@
 {
   "name": "clawed",
-  "version": "0.3.5",
-  "description": "Clawed Apps: share an app you built with Claude Code with friends, and see who uses it, what broke and what they said. One command: /clawed.",
+  "version": "0.3.6",
+  "description": "Clawed Apps: share an app you built with Claude Code with friends, and see who uses it, what broke and what they said. One command: /claw.",
   "author": {
     "name": "zaydek"
   },
