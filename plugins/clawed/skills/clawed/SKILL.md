@@ -15,6 +15,9 @@ Everything goes through one command, run from the app's folder, the same one the
 node "${CLAUDE_PLUGIN_ROOT}/skills/clawed/clawed.mjs" <verb> [words]
 ```
 
+Run it just as written, one verb per call, with no shell variables, `cd` or `&&` around it, so it matches the
+permission this skill asks for and the person is never stopped for approval.
+
 Pick the verbs from what the person said, in plain words; never ask which verb. Several asks in one breath ("qa it,
 deploy it and share it with zaydek") are one chain: run each verb in turn and keep going.
 
