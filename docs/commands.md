@@ -30,7 +30,7 @@ On Claude Code 2.1.275 or later, one line in Claude Code does both: `/plugin ins
 | `/claw pause` | Stops every call at once; `--off` starts again; `--cap 5` sets the daily dollar cap |
 | `/claw remove recipe-box` | Deletes one of your apps from Clawed Apps with everything it holds; Claude asks you first |
 | `/claw feedback` | Tells the Clawed Apps team what you think (not your app's people) |
-| `/claw doctor` | Checks Node, Claude Code, your sign-in, this folder, and keys left in files; one `ok` or `fix:` line each |
+| `/claw doctor` | Checks Node, Claude Code, your sign-in, this folder, keys left in files, and the testers' headless browser (it starts it once); one `ok` or `fix:` line each. `--browser` installs that browser again when it does not start |
 
 Chain them in one breath: "qa it, deploy it and share it with zaydek" runs all three without stopping to ask.
 

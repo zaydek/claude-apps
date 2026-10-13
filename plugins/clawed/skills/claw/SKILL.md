@@ -39,6 +39,7 @@ deploy it and share it with zaydek") are one chain: run each verb in turn and ke
 | "delete my old app", "remove recipe-box" | `remove <app>` (it asks first; on yes, `remove <app> --yes`) |
 | "tell Clawed Apps that..." | `feedback -- "their words"` |
 | "is everything ok", "doctor" | `doctor` |
+| "the testers' browser does not start", "fix the headless browser" | `doctor --browser` |
 
 How to read the answers:
 
