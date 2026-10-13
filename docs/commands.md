@@ -65,7 +65,8 @@ A desktop app (Electron, Tauri, a native binary) ships one archive per OS. In th
 
 `/claw deploy` (and qa) packs each `dir` as its own signed archive of the same version; a friend's computer gets only
 its own (`linux-x64`, `darwin-arm64`, `darwin-x64`, `win32-x64`, `*-arm64`), and is told plainly when the version has
-none for it. Run the app's binary itself (not `open MyApp.app`), so stop can close it. `plugin` names a folder whose
+none for it. Each archive shows its progress as it sends (percent and MB/s) and is given up on only when nothing has gone through
+for 60 s, however slow the uplink. Run the app's binary itself (not `open MyApp.app`), so stop can close it. `plugin` names a folder whose
 `skills/<name>/...`, `commands/<verb>.md` and `.mcp.json` go into every friend's `<app>` plugin beside open, stop,
 feedback and forget (which stay the launcher's); `__PROJECT__` in them becomes the app's name. They reach the app with
 `sh "${CLAUDE_PLUGIN_ROOT}/hooks/run.sh" --run <command words>`, which runs a command in the installed build's folder
