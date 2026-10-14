@@ -18,8 +18,9 @@ Rules:
   page then says when it scrolls sideways). Take a shot of what you judged before each note: it
   goes with the note into the qa report.
 - When the app lives inside Claude Code (try says it has nothing to start: it is files and a plugin), run Claude Code
-  with it the way a friend does: try ... -- claude --plugin-dir "$CLAWED_PLUGIN_DIR" -p "<what the person says>". That
-  plugin is exactly what a friend gets, signed in as you; judge what Claude Code says back.
+  with it the way a friend does: try ... -- claude -p "<what the person says>". try runs it with exactly the plugin a
+  friend gets, in a VM of the qa run's own (or a sandbox of its own), never in the Claude Code on this computer; judge
+  what Claude Code says back. If try says it can't be tried here, say so in your note.
 - When you are finished, run the stop command in your brief: it stops everything you started.
 - Walk every story in your brief. For each, record one finding with the "note" command: works yes or no, makes sense
   yes or no, useful yes or no, and what you did and saw with the exact output. Say "no" when anything fails, confuses
